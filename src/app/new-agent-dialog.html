@@ -1,0 +1,57 @@
+<h1 mat-dialog-title>New Agent</h1>
+<div mat-dialog-content class="new-agent-form">
+  <p>Agent Details</p>
+  <mat-form-field>
+    <input matInput placeholder="Agent IP/Range" [(ngModel)]="data.agentIP">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Agent Username" [(ngModel)]="data.userName">
+  </mat-form-field>
+  <mat-form-field>
+    <input type="password" matInput placeholder="Agent Password" [(ngModel)]="data.password">
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Agent Type</mat-label>
+    <mat-select [(ngModel)]="data.agentType">
+      <mat-option value="TE Agent">TE Agent</mat-option>
+      <mat-option value="Axon">Axon</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field *ngIf="data.agentType === 'Axon'">
+    <mat-label>Agent Version</mat-label>
+    <mat-select [(ngModel)]="data.agentVersion">
+      <mat-option value="8.6.0">8.6.0</mat-option>
+      <mat-option value="8.6.0.4">8.6.0.4</mat-option>
+      <mat-option value="8.6.0.5">8.6.0.5</mat-option>
+      <mat-option value="8.7.4.0">8.7.4.0</mat-option>
+      <mat-option value="8.8.0.0">8.8.0.0</mat-option>
+      <mat-option value="8.8.0.2">8.8.0.2</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field *ngIf="data.agentType === 'TE Agent'">
+    <mat-label>Agent Version</mat-label>
+    <mat-select [(ngModel)]="data.agentVersion">
+      <mat-option value="8.6.0">8.6.0</mat-option>
+      <mat-option value="8.6.0.3">8.6.0.3</mat-option>
+      <mat-option value="8.6.0.4">8.6.0.4</mat-option>
+      <mat-option value="8.7.3.0">8.7.3.0</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+
+  <p>Console Details</p>
+  <mat-form-field>
+    <input matInput placeholder="Console IP" [(ngModel)]="data.consoleIP">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput type="password" placeholder="Console Passphrase" [(ngModel)]="data.passphrase">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Port" [(ngModel)]="data.port">
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button (click)="onNoClick()">Cancel</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="data">Install</button>
+</div>
